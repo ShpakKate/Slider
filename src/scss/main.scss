@@ -1,0 +1,46 @@
+$text-color: #e5e5e5;
+
+.header {
+    height: 2.5rem;
+    width: auto;
+    background-color: $text-color;
+    border-bottom: 2px solid #c6c7c8;
+}
+
+.slides-container {
+    margin: 0;
+}
+
+.slides-fade {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+}
+
+.img {
+    flex: 10;
+    width: auto;
+    height: 28rem;
+}
+
+.text {
+    text-align: center;
+    position: absolute;
+    bottom: 2rem;
+}
+
+.buttons {
+    margin-top: 0 1rem;
+    text-align: center;
+}
+
+.prev,
+.next {
+    display: inline;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
