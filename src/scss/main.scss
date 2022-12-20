@@ -1,4 +1,5 @@
 $text-color: #e5e5e5;
+$green-color: #b3dc59;
 
 .header {
     height: 2.5rem;
@@ -9,25 +10,27 @@ $text-color: #e5e5e5;
 
 .slides-container {
     margin: 0;
+    width: 100%;
 }
 
 .slides-fade {
-    width: 80%;
+    width: 38rem;
     margin: 0 auto;
     position: relative;
-    display: flex;
 }
 
 .img {
-    flex: 10;
     width: auto;
     height: 28rem;
 }
 
 .text {
-    text-align: center;
+    color: $green-color;
+    font-size: 2rem;
+    font-weight: bold;
     position: absolute;
-    bottom: 2rem;
+    bottom: 1rem;
+    left: 50%;
 }
 
 .buttons {

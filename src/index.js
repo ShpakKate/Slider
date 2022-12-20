@@ -1,51 +1,57 @@
 import("./scss/main.scss");
 
+function hiddenSlides(array) {
+    array.forEach(e => {
+        for (let i = 1; i < array.length; i++) {
+            array[i].classList.add('hide');
+        }
+    });
+}
+
+function hiddenAllSlides(array) {
+    array.forEach(e => {
+        for (let i = 0; i < array.length; i++) {
+            array[i].classList.add('hide');
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const imgGallery = document.querySelector('#gallery');
     const slides = Array.from(imgGallery.children);
-    console.log(imgGallery)
-
     let slideIndex = 0;
 
-    function hiddenSlides() {
-        slides.forEach(e => {
-            for (let i = 1; i < slides.length; i++) {
-                slides[i].classList.add('hide');
-            }
-        });
+    hiddenSlides(slides);
+
+    function verifyNextSlide(i) {
+        if (i >= slides.length - 1) {
+            hiddenAllSlides(slides);
+            i = 0;
+            slides[i].classList.remove('hide');
+            currentSlide(i);
+        }
+        else showNextImg(slideIndex);
     }
 
-    hiddenSlides();
-
-    function hiddenAllSlides() {
-        slides.forEach(e => {
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.add('hide');
-            }
-        });
+    function verifyPrevSlide(i) {
+        if (i <= 0) {
+            hiddenAllSlides(slides);
+            i = slides.length - 1;
+            slides[i].classList.remove('hide');
+            currentSlide(i);
+        }
+        else showPrevImg(slideIndex);
     }
-
 
     function showNextImg(i) {
-        if (i >= slides.length - 1) {
-            hiddenSlides();
-            i = 0;
-        }
-
         slides[i].classList.add('hide');
         i++;
         slides[i].classList.remove('hide');
 
         currentSlide(i);
-
     }
 
     function showPrevImg(i) {
-        if (i <= 0) {
-            hiddenAllSlides();
-            i = slides.length - 1;
-        }
-
         slides[i].classList.add('hide');
         i--;
         slides[i].classList.remove('hide');
@@ -58,15 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.querySelector('#prev').addEventListener('click', () => {
-
-        showPrevImg(slideIndex);
-
+        verifyPrevSlide(slideIndex);
     });
 
     document.querySelector('#next').addEventListener('click', () => {
-
-        showNextImg(slideIndex);
-
+        verifyNextSlide(slideIndex);
     });
 
 })
