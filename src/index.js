@@ -1,13 +1,5 @@
 import("./scss/main.scss");
 
-function hiddenSlides(array) {
-    array.forEach(e => {
-        for (let i = 1; i < array.length; i++) {
-            array[i].classList.add('hide');
-        }
-    });
-}
-
 function hiddenAllSlides(array) {
     array.forEach(e => {
         for (let i = 0; i < array.length; i++) {
@@ -21,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = Array.from(imgGallery.children);
     let slideIndex = 0;
 
-    hiddenSlides(slides);
+    hiddenAllSlides(slides);
+
+    slides[slideIndex].classList.remove('hide');
 
     function verifyNextSlide(i) {
         if (i >= slides.length - 1) {
